@@ -127,7 +127,7 @@ function zig_language_definition() {
     relevance: 0,
   };
 
-  const STRINGS = {
+  const SINGLELINESTRINGS = {
     className: "string",
     variants: [
       {
@@ -140,13 +140,15 @@ function zig_language_definition() {
         begin: "\\'",
         end: "\\'",
       },
-      {
-        // Multi-line
-        begin: "\\\\\\\\",
-        end: "$",
-      },
     ],
     contains: [STRINGCONTENT],
+    relevance: 0,
+  };
+
+  const MULTILINESTRING = {
+    className: "string",
+        begin: "\\\\\\\\",
+        end: "$",
     relevance: 0,
   };
 
@@ -217,7 +219,8 @@ function zig_language_definition() {
   const ZIG_DEFAULT_CONTAINS = [
     LITERALS,
     FIELD_IDENTIFIER,
-    STRINGS,
+    SINGLELINESTRINGS,
+    MULTILINESTRING,
     COMMENTS,
     TYPES,
     FUNCTION,
