@@ -5,11 +5,6 @@
 // Read more in README.md
 //
 function zig_language_definition() {
-  const LITERALS = {
-    className: "literal",
-    match: "(true|false|null|undefined)",
-  };
-
   const KEYWORDS =
     "pub align allowzero and asm async await break catch comptime|10 const continue defer " +
     "else enum errdefer export extern false fn for if inline noalias null or orelse packed promise " +
@@ -217,7 +212,6 @@ function zig_language_definition() {
   };
 
   const ZIG_DEFAULT_CONTAINS = [
-    LITERALS,
     FIELD_IDENTIFIER,
     SINGLELINESTRINGS,
     MULTILINESTRING,
@@ -233,7 +227,10 @@ function zig_language_definition() {
   return {
     name: "Zig",
     aliases: ["zig"],
-    keywords: KEYWORDS,
+    keywords: {
+      keyword: KEYWORDS,
+      literal: "true false null undefined",
+    },
     contains: ZIG_DEFAULT_CONTAINS,
   };
 }
